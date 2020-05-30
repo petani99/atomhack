@@ -10,7 +10,7 @@ namespace AtomTasks.Models
     {
         protected override void Seed( TaskContext db )
         {
-            
+            db.Users.Add( new User { UserId = 1, Login = "petani", Password  = "1234", Name  = "Наташа :))", UserCategory  = 1, Cellphone  = "88005553535"} );
             base.Seed( db );
         }
     }

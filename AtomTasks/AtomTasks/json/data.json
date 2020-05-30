@@ -9,9 +9,10 @@
         "coordinates": [ 56.797012069583644, 61.315602147405244 ]
       },
       "properties": {
-        "balloonContent": "balloonContent",
         "clusterCaption": "clusterCaption",
-        "hintContent": "hintContent"
+        "balloonContentHeader": "Name",
+        "balloonContentBody": "<p>Description</p><p>Price</p> <input type='button' value='Request'>",
+        "hintContent": "Name"
       },
       "options": {
         "iconLayout": "default#image",
