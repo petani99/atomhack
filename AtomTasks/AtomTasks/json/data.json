@@ -10,9 +10,9 @@
       },
       "properties": {
         "clusterCaption": "clusterCaption",
-        "balloonContentHeader": "Name",
-        "balloonContentBody": "<p>Description</p><p>Price</p> <input type='button' value='Request'>",
-        "hintContent": "Name"
+        "balloonContentHeader": "Название",
+        "balloonContentBody": "<p>Описание</p><p>Price</p> <input type='button' value='Request'>",
+        "hintContent": "Название"
       },
       "options": {
         "iconLayout": "default#image",
