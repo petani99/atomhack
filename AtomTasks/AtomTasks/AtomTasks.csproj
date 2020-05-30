@@ -131,12 +131,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Mark.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Request.cs" />
+    <Compile Include="Models\StatusModel.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TaskCategory.cs" />
     <Compile Include="Models\TaskContext.cs" />
     <Compile Include="Models\TaskDbInitializer.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserCategory.cs" />
+    <Compile Include="Models\UserMark.cs" />
+    <Compile Include="Models\UserTaskAllowed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace AtomTasks.Models
     public class Task
     { 
         public int TaskId { get; set; }
-        public int CustomerId { get; set; }
+        public int Customer { get; set; }
         public int TaskCategory { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -17,5 +17,6 @@ namespace AtomTasks.Models
         public double LocationX { get; set; }
         public double LocationY { get; set; }
         public int TaskStatus { get; set; }
+        public int UserMark { get; set; }
     }
 }
