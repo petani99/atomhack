@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "TestView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserTestView</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            UserCategoryObj.Code
+        </th>
+        <th>
+            Login
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Cellphone
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.Users)
+    {
+        <tr>
+            <td>
+                @item.UserCategoryObj.Code
+            </td>
+            <td>
+                @item.Login
+            </td>
+            <td>
+                @item.Password
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Cellphone
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+            </td>
+        </tr>
+    }
+
+</table>
+<h2>UserTASKView</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            CustomerObj.Login
+        </th>
+        <th>
+            TaskCategoryObj.Code
+        </th>
+        <th>
+            TaskStatusObj.Class
+        </th>
+        <th>
+            model.UserMarkObj.Text
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            StartPrice
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            LocationX
+        </th>
+        <th>
+            LocationY
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in ViewBag.Tasks)
+    {
+        <tr>
+            <td>
+                @item.CustomerObj.Login
+            </td>
+            <td>
+                @item.TaskCategoryObj.Code
+            </td>
+            <td>
+                @item.TaskStatusObj.Class
+            </td>
+            <td>
+                @item.UserMarkObj.Text
+            </td>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @item.StartPrice
+            </td>
+            <td>
+                @item.Date
+            </td>
+            <td>
+                @item.LocationX
+            </td>
+            <td>
+                @item.LocationY
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaskId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    @foreach (var item in ViewBag.Requests)
+    {
+        <tr>
+            <td>
+                @item.ExecutorObj.Login
+            </td>
+            <td>
+                @item.MarkObj.Code
+            </td>
+  
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    @foreach (var item in ViewBag.Messages)
+    {
+        <tr>
+            <td>
+                @item.UserObj.Login
+            </td>
+            <td>
+                @item.TaskObj.Name
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    @foreach (var item in ViewBag.UserTaskAlloweds)
+    {
+        <tr>
+            <td>
+                @item.UserCategoryObj.Code
+            </td>
+            <td>
+                @item.TaskCategoryObj.Code
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<table class="table">
+    @foreach (var item in ViewBag.Marks)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Description
+            </td>
+
+        </tr>
+    }
+
+</table>

@@ -8,7 +8,9 @@ namespace AtomTasks.Models
 {
     public class TaskContext : DbContext
     {
-        public TaskContext():base("DefaultConnection") {}
+        public TaskContext():base("DefaultConnection") 
+        {
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Task> Tasks { get; set; }
@@ -19,6 +21,6 @@ namespace AtomTasks.Models
         public DbSet<Status> Statuses { get; set; }
         public DbSet<UserCategory> UserCategories { get; set; }
         public DbSet<TaskCategory> TaskCategories { get; set; }
-        public DbSet<UserTaskAllowed> UserTaskAllows { get; set; }
+        public DbSet<UserTaskAllowed> UserTaskAlloweds { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace AtomTasks.Models
     {
         public int StatusId { get; set; }
         public string Class { get; set; }
-        public int Code { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
     }
 }

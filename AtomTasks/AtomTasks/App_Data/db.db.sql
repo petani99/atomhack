@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS "Users" (
 	"Password"	TEXT,
 	"Name"	TEXT,
 	"UserCategory"	INTEGER,
-	"CellPhone"	INTEGER,
+	"CellPhone"	TEXT,
 	FOREIGN KEY("UserCategory") REFERENCES "UserCategories"("UserCategoryId")
 );
 DROP TABLE IF EXISTS "UserTaskAllows";

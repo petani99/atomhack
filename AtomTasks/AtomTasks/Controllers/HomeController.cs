@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AtomTasks.Models;
 
 namespace AtomTasks.Controllers
 {
     public class HomeController : Controller
     {
+        readonly TaskContext db = new TaskContext();
+
         public ActionResult Index()
         {
-            return View();
+           return View();
         }
 
-        public ActionResult UserList()
+
+        public ActionResult TestLists()
         {
-            return View("UserTestView");
+            ViewBag.Users = db.Users;
+            ViewBag.Tasks = db.Tasks;
+            ViewBag.Requests = db.Requests;
+            ViewBag.Messages = db.Messages;
+            ViewBag.Marks = db.Marks;
+            ViewBag.UserTaskAlloweds = db.UserTaskAlloweds;
+            return View("TestView");
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
 
-            return View();
-        }
     }
 }
