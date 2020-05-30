@@ -13,8 +13,10 @@ function init() {
     myMap.geoObjects.add(objectManager);
 
     $.ajax({
-        // В файле data.json заданы геометрия, опции и данные меток .
-        url: "../json/data.json"
+         // В файле data.json заданы геометрия, опции и данные меток .
+        url: "../json/data.json",
+        header: "Content-type: text/html; charset=utf-8"
+
     }).done(function (data) {
         objectManager.add(data);
     });
