@@ -22,5 +22,7 @@ namespace AtomTasks.Models
         public DbSet<UserCategory> UserCategories { get; set; }
         public DbSet<TaskCategory> TaskCategories { get; set; }
         public DbSet<UserTaskAllowed> UserTaskAlloweds { get; set; }
+
+
     }
 }

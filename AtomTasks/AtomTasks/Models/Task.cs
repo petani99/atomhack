@@ -29,7 +29,7 @@ namespace AtomTasks.Models
         [ForeignKey("TaskStatus")]
         public virtual Status TaskStatusObj { get; set; }
 
-        public int UserMark { get; set; }
+        public int? UserMark { get; set; }
         [ForeignKey("UserMark")]
         public virtual UserMark UserMarkObj { get; set; }
     }

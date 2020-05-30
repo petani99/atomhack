@@ -17,17 +17,26 @@ namespace AtomTasks.Controllers
         }
 
 
-        public ActionResult TestLists()
+        public ActionResult Test()
         {
-            ViewBag.Users = db.Users;
+
             ViewBag.Tasks = db.Tasks;
-            ViewBag.Requests = db.Requests;
-            ViewBag.Messages = db.Messages;
-            ViewBag.Marks = db.Marks;
-            ViewBag.UserTaskAlloweds = db.UserTaskAlloweds;
-            return View("TestView");
+            return View("Test");
         }
 
+        public string TaskPoints()
+        {
+            string result = "{\"type\": \"FeatureCollection\",\"features\": [";
+            foreach (Task task in db.Tasks)
+            {
+                result += "{\"type\": \"Feature\",\"id\": 0,\"geometry\":{\"type\": \"Point\",\"coordinates\": [ 56.797012069583644, 61.315602147405244 ]},"
+                  + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"Название\","
+                  + "\"balloonContentBody\": \"<p>Описание</p><p>Цена</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
+                  + "\"options\": {\"iconLayout\": \"default#image\",\"iconImageHref\": \"../images/MyIcon.png\"}},";
+            }
+            result += result + "]}";
+            return result;
+        }
 
     }
 }

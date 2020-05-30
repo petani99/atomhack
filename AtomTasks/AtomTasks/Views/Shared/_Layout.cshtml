@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <div>
+        <p>@Html.ActionLink("Тест", "Test", "Home")</p>
+    </div>
     <div id="header">
 
         <!-- Top header menu containing
@@ -60,5 +63,147 @@
         </p>
         <p><input type="button" value="Войти"></p>
     </form>
+
+    <script type="text/javascript">
+        GetAllTasks();
+
+        // Получение всех заданий по ajax-запросу
+        function GetAllTasks() {
+            $.ajax({
+                url: '/api/tasks/',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    WriteResponse(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        // Добавление нового задания
+        function AddTask() {
+            // получаем значения для добавляемого задания
+            var user = {
+                Name: $('#addName').val(),
+                Position: $('#addPosition').val()
+            };
+
+            $.ajax({
+                url: '/api/users/',
+                type: 'POST',
+                data: JSON.stringify(user),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllUsers();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        function DeleteTask(id) {
+
+            $.ajax({
+                url: '/api/users/' + id,
+                type: 'DELETE',
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllUsers();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+
+        // редактирование задания
+        function EditUser() {
+            var id = $('#editId').val()
+            // получаем новые значения для редактируемого задания
+            var user = {
+                Id: $('#editId').val(),
+                Name: $('#editName').val(),
+                Position: $('#editPosition').val(),
+            };
+            $.ajax({
+                url: '/api/users/' + id,
+                type: 'PUT',
+                data: JSON.stringify(user),
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    GetAllUsers();
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        // вывод полученных данных на экран
+        function WriteResponse(tasks) {
+            $.each(tasks, function (index, task) {
+                //show(task.TaskId)  
+            });
+
+
+        }
+        // обработчик удаления
+        function DeleteItem(el) {
+
+            // получаем id удаляемого объекта
+            var id = $(el).attr('data-item');
+            DeleteTask(id);
+        }
+        // обработчик редактирования
+        function EditItem(el) {
+
+            // получаем id редактируемого объекта
+            var id = $(el).attr('data-item');
+            GetTask(id);
+        }
+        // вывод данных редактируемого пользователя в поля для редактирования
+        function ShowTask(task) {
+            if (user != null) {
+                $("#createBlock").css('display', 'none');
+                $("#editBlock").css('display', 'block');
+                $("#editId").val(task.Id);
+                $("#editName").val(task.Name);
+                $("#editPosition").val(task.Position);
+            }
+            else {
+                alert("Такой пользователь не существует");
+            }
+        }
+        function CancelEdit() {
+            $("#createBlock").css('display', 'block');
+
+            $("#editId").val(null);
+            $("#editName").val(null);
+            $("#editPosition").val(null);
+
+            $("#editBlock").css('display', 'none');
+
+        }
+
+        // запрос пользователя на редактирование
+        function GetTask(id) {
+
+            $.ajax({
+                url: '/api/tasks/' + id,
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    ShowTask(data);
+                },
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+    </script>
+
+
 </body>
 </html>
