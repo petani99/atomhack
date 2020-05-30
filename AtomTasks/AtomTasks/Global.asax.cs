@@ -14,8 +14,6 @@ namespace AtomTasks
     {
         protected void Application_Start()
         {
-            Database.SetInitializer( new TaskDbInitializer() );
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters( GlobalFilters.Filters );
             RouteConfig.RegisterRoutes( RouteTable.Routes );

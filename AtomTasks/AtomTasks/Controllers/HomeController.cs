@@ -13,11 +13,9 @@ namespace AtomTasks.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult UserList()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            return View("UserTestView");
         }
 
         public ActionResult Contact()

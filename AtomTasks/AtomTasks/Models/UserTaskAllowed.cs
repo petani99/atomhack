@@ -8,7 +8,7 @@ namespace AtomTasks.Models
     public class UserTaskAllowed
     {
         public int Id { get; set; }
-        public int UserCategory { get; set; }
-        public int TaskCategory { get; set; }
+        public UserCategory UserCategory { get; set; }
+        public TaskCategory TaskCategory { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace AtomTasks.Models
         public string Login { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
-        public int UserCategory { get; set; }
+        public UserCategory UserCategory { get; set; }
         public string Cellphone { get; set; }
     }
 }

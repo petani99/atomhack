@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AtomTasks.Models
 {
-    public class StatusModel
+    public class Status
     {
         public int StatusId { get; set; }
         public string Class { get; set; }
