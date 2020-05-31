@@ -55,26 +55,7 @@
 
     <form id="setExecutor" style="display: none">
         <table>
-        @foreach (var item in ViewBag.Requests )
-        {
-            <tr>
-                <td>
-                    @item.TaskObj.Name
-                </td>
-                <td>
-                    @item.Price
-                </td>
-                <td>
-                    @item.TaskStatusObj.Code
-                </td>
-                <td>
-                    @item.UserMarkObj.Text
-                </td>
-                <td>
-                    @item.Timestamp
-                </td>
-            </tr>
-        }
+        
 
         </table>
     </form>
