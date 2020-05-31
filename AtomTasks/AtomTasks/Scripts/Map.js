@@ -11,10 +11,10 @@ function init() {
         objectManager = new ymaps.ObjectManager();
 
     myMap.geoObjects.add(objectManager);
-    alert(x + '\n' + y + '\n' + z)
+   
     $.ajax({
-        // В файле data.json заданы геометрия, опции и данные меток .
-        url: 'http://localhost:52724/home/taskpoints/'
+        url: '/api/tasks/'
+        , beforeSend: function () {alert("Test")}
         , success: function (data) { objectManager.add(data); }
         , error: function (x, y, z) { alert(x + '\n' + y + '\n' + z); }});
 
