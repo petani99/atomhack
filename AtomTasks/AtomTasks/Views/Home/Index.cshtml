@@ -62,7 +62,7 @@
     <script type="text/javascript">
         function NewTask() {
             // получаем значения для добавляемого задания
-            alert($('#ExecType').children("option:selected").val());
+            
             var task = {
                 newTaskCustomer: $('CurrentUser')
                 , Name: $('#newTaskName').val()
@@ -78,6 +78,10 @@
                 type: 'POST',
                 data: JSON.stringify(task),
                 contentType: "application/json;charset=utf-8",
+                success: function () {
+                    disp(document.getElementById('newTask'));
+                    location.reload();
+                },
                 error: function (x, y, z) {
                     alert(x + '\n' + y + '\n' + z);
                 }

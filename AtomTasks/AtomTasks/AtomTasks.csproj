@@ -192,6 +192,7 @@
     <Content Include="images\ball.png" />
     <Content Include="images\coin2.gif" />
     <Content Include="images\MyIcon.png" />
+    <Content Include="images\MyIco.png" />
     <Content Include="images\zarech.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
