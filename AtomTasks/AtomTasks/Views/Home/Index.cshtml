@@ -46,21 +46,37 @@
     </form>
 
     <form id="postRequest" style="display: none">
-        <p>Новая задача</p>
-        <p><input type="text" placeholder="Название"></p>
-        <p><input type="text" placeholder="Описание"></p>
-        <p><input type="text" placeholder="Начальная цена "></p>
-        <p>
-            <select id="ExecType" name="Type">
-                @foreach( var item in ViewBag.TaskCategories )
-                {
-                    <option value=@item.Code>@item.Name</option>
-                }
-            </select>
-        </p>
-        <p><input type="text" id="geopointX" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
-        <p><input type="text" id="geopointY" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
-        <p><input type="button" value="Добавить"></p>
+        <p>Предложите свою цену!</p>
+        <p><input type="text" placeholder="Ваша цена"></p>
+        <p><input type="button" value="Чат с заказчиком"></p>
+        <p></p>
+        <p><input type="button" value="Предложить помощь"></p>
+    </form>
+
+    <form id="setExecutor" style="display: none">
+        <table>
+        @foreach (var item in ViewBag.Requests )
+        {
+            <tr>
+                <td>
+                    @item.TaskObj.Name
+                </td>
+                <td>
+                    @item.Price
+                </td>
+                <td>
+                    @item.TaskStatusObj.Code
+                </td>
+                <td>
+                    @item.UserMarkObj.Text
+                </td>
+                <td>
+                    @item.Timestamp
+                </td>
+            </tr>
+        }
+
+        </table>
     </form>
 </body>
 </html>

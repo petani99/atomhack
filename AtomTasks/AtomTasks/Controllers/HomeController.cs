@@ -11,10 +11,11 @@ namespace AtomTasks.Controllers
     {
         readonly TaskContext db = new TaskContext();
 
-        public ActionResult Index()
+        public ActionResult Index( int task )
         {
             ViewBag.TaskCategories = db.TaskCategories;
-           return View();
+            ViewBag.Requests = db.Requests.Where(x => x.Task.Equals(task));
+            return View();
         }
 
 

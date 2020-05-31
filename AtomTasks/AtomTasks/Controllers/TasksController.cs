@@ -32,8 +32,8 @@ namespace AtomTasks.Controllers
             {
                 result += "{\"type\": \"Feature\",\"id\": "+task.TaskId.ToString() + ",\"geometry\":{\"type\": \"Point\",\"coordinates\": [ " + task.LocationX.ToString(nfi) + ", " + task.LocationY.ToString(nfi) + " ]},"
                   + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"" + task.Name + "\","
-                  + "\"balloonContentBody\": \"<p>" + task.Description + "</p><p>" + task.StartPrice.ToString(nfi) + "</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
-                  + "\"options\": {\"iconLayout\": \"default#image\",\"iconImageHref\": \"../images/MyIcon.png\"}},";
+                  + "\"balloonContentBody\": \"<p>" + task.Description + "</p><p>" + task.StartPrice.ToString(nfi) + "</p> <input type='button' value='Отозваться' onClick=disp( document.getElementById('modal') )>\",\"hintContent\": \"Название\"},"
+                      + "\"options\": {\"iconLayout\": \"default#image\",\"iconImageHref\": \"../images/MyIcon.png\"}},";
             }
             result = "{\"type\": \"FeatureCollection\",\"features\": [" + result.TrimEnd(',') + "]}";
             
