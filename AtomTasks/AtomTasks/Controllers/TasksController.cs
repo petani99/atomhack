@@ -28,11 +28,20 @@ namespace AtomTasks.Controllers
             nfi.NumberDecimalSeparator = ".";
 
             string result ="";
-            foreach (Task task in db.Tasks)
+            User CurrentUser = db.Users.Find(2);
+
+            Task[] UsersTasks = (from tsk in db.Tasks
+                                join alw in db.UserTaskAlloweds
+                                     on tsk.TaskCategory equals alw.TaskCategory
+                                where CurrentUser.UserCategory == alw.UserCategory
+                                select tsk).ToArray();
+
+
+            foreach (Task t in UsersTasks)
             {
-                result += "{\"type\": \"Feature\",\"id\": "+task.TaskId.ToString() + ",\"geometry\":{\"type\": \"Point\",\"coordinates\": [ " + task.LocationX.ToString(nfi) + ", " + task.LocationY.ToString(nfi) + " ]},"
-                  + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"" + task.Name + "\","
-                  + "\"balloonContentBody\": \"<p>" + task.Description + "</p><p>" + task.StartPrice.ToString(nfi) + "</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
+                result += "{\"type\": \"Feature\",\"id\": "+ t.TaskId.ToString() + ",\"geometry\":{\"type\": \"Point\",\"coordinates\": [ " + t.LocationX.ToString(nfi) + ", " + t.LocationY.ToString(nfi) + " ]},"
+                  + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"" + t.Name + "\","
+                  + "\"balloonContentBody\": \"<p>" + t.Description + "</p><p>" + t.StartPrice.ToString(nfi) + "</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
                   + "\"options\": {\"iconLayout\": \"default#image\",\"iconImageHref\": \"../images/MyIcon.png\"}},";
             }
             result = "{\"type\": \"FeatureCollection\",\"features\": [" + result.TrimEnd(',') + "]}";
