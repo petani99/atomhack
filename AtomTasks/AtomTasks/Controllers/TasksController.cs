@@ -100,6 +100,11 @@ namespace AtomTasks.Controllers
                 return BadRequest(ModelState);
             }
 
+            task.UserMark = 1;
+            task.Customer = 0;
+            task.TaskStatus = 4;
+
+            task.Date = DateTime.Now;
             db.Tasks.Add(task);
             db.SaveChanges();
 

@@ -45,44 +45,8 @@
     
 
     <script type="text/javascript">
-        GetAllTasks();
-
-        // Получение всех заданий по ajax-запросу
-        function GetAllTasks() {
-            $.ajax({
-                url: '/api/tasks/',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    WriteResponse(data);
-                },
-                error: function (x, y, z) {
-                    alert(x + '\n' + y + '\n' + z);
-                }
-            });
-        }
-
         // Добавление нового задания
-        function AddTask() {
-            // получаем значения для добавляемого задания
-            var user = {
-                Name: $('#addName').val(),
-                Position: $('#addPosition').val()
-            };
 
-            $.ajax({
-                url: '/api/users/',
-                type: 'POST',
-                data: JSON.stringify(user),
-                contentType: "application/json;charset=utf-8",
-                success: function (data) {
-                    GetAllUsers();
-                },
-                error: function (x, y, z) {
-                    alert(x + '\n' + y + '\n' + z);
-                }
-            });
-        }
 
         function DeleteTask(id) {
 
