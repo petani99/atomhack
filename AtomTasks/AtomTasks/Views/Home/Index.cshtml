@@ -29,20 +29,20 @@
 
     <form id="newTask" style="display: none">
         <p>Новая задача</p>
-        <p><input type="text" placeholder="Название"></p>
-        <p><input type="text" placeholder="Описание"></p>
-        <p><input type="text" placeholder="Начальная цена "></p>
+        <p><input type="text" placeholder="Название" id="newTaskName"></p>
+        <p><input type="text" placeholder="Описание" id="newTaskDescription"></p>
+        <p><input type="text" placeholder="Начальная цена" id="newTaskStartPrice"></p>
         <p>
             <select id="ExecType" name="Type">
                 @foreach( var item in ViewBag.TaskCategories )
                 {
-                    <option value=@item.Code>@item.Name</option>
+                    <option value=@item.TaskCategoryId>@item.Name</option>
                 }
             </select>
         </p>
         <p><input type="text" id="geopointX" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
         <p><input type="text" id="geopointY" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
-        <p><input type="button" value="Добавить"></p>
+        <p><input type="button" value="Добавить" id="newTaskBtn"></p>
     </form>
 
     <form id="postRequest" style="display: none">
@@ -51,16 +51,47 @@
         <p><input type="text" placeholder="Описание"></p>
         <p><input type="text" placeholder="Начальная цена "></p>
         <p>
-            <select id="ExecType" name="Type">
+            <select id="ExecType2" name="Type">
                 @foreach( var item in ViewBag.TaskCategories )
                 {
-                    <option value=@item.Code>@item.Name</option>
+                    <option value=@item.TaskCategoryId>@item.Name</option>
                 }
             </select>
         </p>
-        <p><input type="text" id="geopointX" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
-        <p><input type="text" id="geopointY" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="text" id="geopointX2" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="text" id="geopointY2" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
         <p><input type="button" value="Добавить"></p>
     </form>
+    <script type="text/javascript">
+        function NewTask() {
+            // получаем значения для добавляемого задания
+            alert($('#ExecType').children("option:selected").val());
+            var task = {
+                newTaskCustomer: $('CurrentUser')
+                , Name: $('#newTaskName').val()
+                , TaskCategory: $('#ExecType').children("option:selected").val()
+                , Description: $('#newTaskDescription').val()
+                , StartPrice: $('#newTaskStartPrice').val()
+                , LocationX: $('#geopointX').val()
+                , LocationY: $('#geopointY').val()
+            };
+
+            $.ajax({
+                url: '/api/tasks/',
+                type: 'POST',
+                data: JSON.stringify(task),
+                contentType: "application/json;charset=utf-8",
+                error: function (x, y, z) {
+                    alert(x + '\n' + y + '\n' + z);
+                }
+            });
+        }
+        $(document).ready(function () {
+            $("#newTaskBtn").click(function (event) {
+                event.preventDefault();
+                NewTask();
+            });
+        });
+    </script>
 </body>
 </html>

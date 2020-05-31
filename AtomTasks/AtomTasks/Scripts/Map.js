@@ -20,7 +20,6 @@ function init() {
     });
     $.ajax({
         url: '/api/tasks/'
-        , beforeSend: function () {alert("Test")}
         , success: function (data) { objectManager.add(data); }
         , error: function (x, y, z) { alert(x + '\n' + y + '\n' + z); }});
 
