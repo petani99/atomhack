@@ -8,7 +8,7 @@ namespace AtomTasks.Models
     public class TaskCategory
     {
         public int TaskCategoryId { get; set; }
-        public int Code { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
