@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -17,19 +20,27 @@ namespace AtomTasks.Controllers
     {
         private TaskContext db = new TaskContext();
 
+
         // GET: api/Tasks
-        public string GetTasks()
+        public HttpResponseMessage GetTasks()
         {
-            string result = "{\"type\": \"FeatureCollection\",\"features\": [";
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
+            string result ="";
             foreach (Task task in db.Tasks)
             {
-                result += "{\"type\": \"Feature\",\"id\": 0,\"geometry\":{\"type\": \"Point\",\"coordinates\": [ 56.797012069583644, 61.315602147405244 ]},"
-                  + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"Название\","
-                  + "\"balloonContentBody\": \"<p>Описание</p><p>Цена</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
+                result += "{\"type\": \"Feature\",\"id\": "+task.TaskId.ToString() + ",\"geometry\":{\"type\": \"Point\",\"coordinates\": [ " + task.LocationX.ToString(nfi) + ", " + task.LocationY.ToString(nfi) + " ]},"
+                  + "\"properties\": {\"clusterCaption\": \"clusterCaption\",\"balloonContentHeader\": \"" + task.Name + "\","
+                  + "\"balloonContentBody\": \"<p>" + task.Description + "</p><p>" + task.StartPrice.ToString(nfi) + "</p> <input type='button' value='Отозваться'>\",\"hintContent\": \"Название\"},"
                   + "\"options\": {\"iconLayout\": \"default#image\",\"iconImageHref\": \"../images/MyIcon.png\"}},";
             }
-            result += result + "]}";
-            return result;
+            result = "{\"type\": \"FeatureCollection\",\"features\": [" + result.TrimEnd(',') + "]}";
+            
+
+            var resp = new HttpResponseMessage(HttpStatusCode.OK);
+            resp.Content = new StringContent(result, System.Text.Encoding.UTF8, "text/plain");
+            return resp;
         }
 
         // GET: api/Tasks/5

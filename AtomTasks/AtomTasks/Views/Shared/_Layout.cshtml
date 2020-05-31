@@ -144,9 +144,8 @@
         // вывод полученных данных на экран
         function WriteResponse(tasks) {
             $.each(tasks, function (index, task) {
-                //show(task.TaskId)  
+                show(task.TaskId)  
             });
-
 
         }
         // обработчик удаления
@@ -173,7 +172,7 @@
                 $("#editPosition").val(task.Position);
             }
             else {
-                alert("Такой пользователь не существует");
+                alert("Такое задание не существует");
             }
         }
         function CancelEdit() {
@@ -187,7 +186,7 @@
 
         }
 
-        // запрос пользователя на редактирование
+        // запрос задания на редактирование
         function GetTask(id) {
 
             $.ajax({
