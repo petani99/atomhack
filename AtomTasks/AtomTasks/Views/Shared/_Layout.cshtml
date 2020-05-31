@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
-    <script src="../../Scripts/Login.js" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/Form.js")" type="text/javascript"></script>
 </head>
 
 <body>
     <div>
-        <p>@Html.ActionLink("Тест", "Test", "Home")</p>
+        <p>@Html.ActionLink( "Тест", "Test", "Home" )</p>
     </div>
     <div id="header">
 
@@ -19,7 +19,7 @@
 
             <!-- Logo -->
             <div id="logo">
-                <img src="images/zarech.gif" />
+                <img src="@Url.Content("~/images/zarech.gif")"/>
             </div>
 
             <!-- Navigation Menu -->
@@ -42,27 +42,7 @@
     </div>
     @RenderBody()
 
-    <form id="modal">
-        <p><input type="text" placeholder="Логин"></p>
-        <p><input type="text" placeholder="Пароль"></p>
-        <p><input type="button" value="Войти"></p>
-        <p><a href="#">Зарегистрироваться</a></p>
-    </form>
-
-    <form id="newTask">
-        <p>Новая задача</p>
-        <p><input type="text" placeholder="Название"></p>
-        <p><input type="text" placeholder="Описание"></p>
-        <p><input type="text" placeholder="Начальная цена "></p>
-        <p>
-            <select id="ExecType" name="Type">
-                <option value="Yur">Юридическое лицо</option>
-                <option value="Fiz">Физическое лицо</option>
-                <option value="WE">Не имеет значения</option>
-            </select>
-        </p>
-        <p><input type="button" value="Войти"></p>
-    </form>
+    
 
     <script type="text/javascript">
         GetAllTasks();
@@ -144,7 +124,7 @@
         // вывод полученных данных на экран
         function WriteResponse(tasks) {
             $.each(tasks, function (index, task) {
-                show(task.TaskId)  
+                show(task.TaskId)
             });
 
         }

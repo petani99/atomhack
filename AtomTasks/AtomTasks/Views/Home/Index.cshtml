@@ -20,5 +20,47 @@
 </head>
 <body>
     <div id="map"></div>
+    <form id="modal" style="display: none">
+        <p><input type="text" placeholder="Логин"></p>
+        <p><input type="text" placeholder="Пароль"></p>
+        <p><input type="button" value="Войти"></p>
+        <p><a href="#">Зарегистрироваться</a></p>
+    </form>
+
+    <form id="newTask" style="display: none">
+        <p>Новая задача</p>
+        <p><input type="text" placeholder="Название"></p>
+        <p><input type="text" placeholder="Описание"></p>
+        <p><input type="text" placeholder="Начальная цена "></p>
+        <p>
+            <select id="ExecType" name="Type">
+                @foreach( var item in ViewBag.TaskCategories )
+                {
+                    <option value=@item.Code>@item.Name</option>
+                }
+            </select>
+        </p>
+        <p><input type="text" id="geopointX" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="text" id="geopointY" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="button" value="Добавить"></p>
+    </form>
+
+    <form id="postRequest" style="display: none">
+        <p>Новая задача</p>
+        <p><input type="text" placeholder="Название"></p>
+        <p><input type="text" placeholder="Описание"></p>
+        <p><input type="text" placeholder="Начальная цена "></p>
+        <p>
+            <select id="ExecType" name="Type">
+                @foreach( var item in ViewBag.TaskCategories )
+                {
+                    <option value=@item.Code>@item.Name</option>
+                }
+            </select>
+        </p>
+        <p><input type="text" id="geopointX" name="geopointX" placeholder="GPS X координата" value="" .$geopointX."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="text" id="geopointY" name="geopointY" placeholder="GPS Y координата" value="" .$geopointY."" class="validate[required,custom[inputgps]] text-input" "></p>
+        <p><input type="button" value="Добавить"></p>
+    </form>
 </body>
 </html>

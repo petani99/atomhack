@@ -13,6 +13,7 @@ namespace AtomTasks.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.TaskCategories = db.TaskCategories;
            return View();
         }
 
